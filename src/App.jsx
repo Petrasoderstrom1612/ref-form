@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import React from 'react'
 
 function App() {
+  const [text, setText] = React.useState("")
+  const [list, setList] = React.useState(["1", "2"])
+
+  const handleForm = (e) => {
+    e.preventDefault()
+    console.log("submitted")
+  }
 
   return (
     <>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <form onSubmit={handleForm}>
+        <h1>List</h1>
+        <input
+          value={text}
+        ></input>
+        <button>Add</button>
+      </form>
+      <ul>
+        {list.map((item,i) => <li key={i}>{item}</li>)}
+      </ul>
     </>
   )
 }
