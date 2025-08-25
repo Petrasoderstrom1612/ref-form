@@ -2,11 +2,17 @@ import React from 'react'
 
 function App() {
   const [text, setText] = React.useState("")
-  const [list, setList] = React.useState(["1", "2"])
+  const [list, setList] = React.useState([])
+
+  const handleText = (e) => {
+    setText(e.target.value)
+  }
 
   const handleForm = (e) => {
     e.preventDefault()
     console.log("submitted")
+    setList(prevList => [...prevList, text])
+    setText("")
   }
 
   return (
@@ -15,6 +21,7 @@ function App() {
         <h1>List</h1>
         <input
           value={text}
+          onChange={handleText}
         ></input>
         <button>Add</button>
       </form>
